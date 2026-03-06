@@ -1,0 +1,60 @@
+{
+  "name": "free-ai-agent-pro",
+  "version": "1.0.0",
+  "description": "FreeAIAgentPro - Multi-Agent AI Desktop Application",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "wait-on tcp:5173 && electron .",
+    "build": "npm run build:vite && npm run build:electron",
+    "build:vite": "vite build",
+    "build:electron": "tsc -p tsconfig.main.json",
+    "dist": "npm run build && electron-builder --win",
+    "dist:dir": "npm run build && electron-builder --win --dir"
+  },
+  "keywords": ["ai", "agent", "electron", "desktop"],
+  "author": "FreeAIAgentPro",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "concurrently": "^9.2.1",
+    "electron": "^40.8.0",
+    "electron-builder": "^26.8.1",
+    "electron-log": "^5.4.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "wait-on": "^9.0.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "build": {
+    "appId": "com.freeaiagentpro.app",
+    "productName": "FreeAIAgentPro",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

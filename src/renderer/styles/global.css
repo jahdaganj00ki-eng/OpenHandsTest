@@ -1,0 +1,221 @@
+/* FreeAIAgentPro - Minimalist Block Goose-inspired Design */
+:root {
+  /* Color Palette - Black, Gray, White */
+  --color-black: #000000;
+  --color-dark-gray: #1A1A1A;
+  --color-medium-gray: #333333;
+  --color-light-gray: #E5E5E5;
+  --color-white: #FFFFFF;
+  
+  /* Accent Colors for Agents */
+  --color-brain: #4A90D9;      /* Blue - Commander */
+  --color-quest: #50C878;       /* Green - Researcher */
+  --color-forge: #FF6B35;       /* Orange - Engineer */
+  --color-spark: #9B59B6;       /* Purple - Creative */
+  
+  /* Semantic Colors */
+  --color-success: #27AE60;
+  --color-error: #E74C3C;
+  --color-warning: #F39C12;
+  
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Styles */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-black);
+  color: var(--color-light-gray);
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+h1 { font-size: var(--font-size-2xl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+
+/* Links */
+a {
+  color: var(--color-brain);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-white);
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-light-gray);
+}
+
+.btn-secondary {
+  background-color: var(--color-medium-gray);
+  color: var(--color-white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-dark-gray);
+}
+
+/* Inputs */
+input, textarea {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  background-color: var(--color-dark-gray);
+  color: var(--color-white);
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--color-white);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-medium-gray);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-medium-gray);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light-gray);
+}
+
+/* Utility Classes */
+.text-white { color: var(--color-white); }
+.text-gray { color: var(--color-light-gray); }
+.text-muted { color: var(--color-medium-gray); }
+
+.bg-black { background-color: var(--color-black); }
+.bg-dark { background-color: var(--color-dark-gray); }
+.bg-gray { background-color: var(--color-medium-gray); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn var(--transition-normal);
+}
+
+.animate-slideIn {
+  animation: slideIn var(--transition-normal);
+}
+
+/* Agent-specific Classes */
+.agent-brain { border-color: var(--color-brain); }
+.agent-quest { border-color: var(--color-quest); }
+.agent-forge { border-color: var(--color-forge); }
+.agent-spark { border-color: var(--color-spark); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  :root {
+    --font-size-base: 14px;
+  }
+}
